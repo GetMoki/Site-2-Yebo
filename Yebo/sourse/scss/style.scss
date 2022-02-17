@@ -1,0 +1,734 @@
+//=========================================================================================
+//Даний файл є файлом де описані стилі сайту
+//=========================================================================================
+
+//=========================================================================================
+//Підключення обнуляючого файлу
+@import 'nullstyle.scss';
+//=========================================================================================
+
+//=========================================================================================
+//Підключення сімейства шрифтів
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+//=========================================================================================
+
+//=========================================================================================
+//Підключення стилів слайдера
+//@import url('sliderstyle.scss');
+//=========================================================================================
+
+//=========================================================================================
+//Стилі загальних стилів сайту
+/* чи треба цей код?? щоб коли мню відкрите не міг скролити сайт
+ @media(max-width: 767px){
+	body{//забороняю скролити коли відкрите меню
+		&.lock{
+			overflow: hidden;
+		}
+	}
+}
+*/
+.wrapper{
+	font-family: 'Lato', sans-serif;
+	overflow: hidden;
+	min-height: 100%; 
+}
+.page{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+}
+.content{} //наповнення сайту між fullscreen & footer
+.container{
+	max-width: 1130px; //обмеження контенту в кількох блоках
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.block { //стиль блоку який постійно використовуєтсь на сайті починаючи з about us
+	text-align: center; // а саме в блоках: about us,
+	&__icon {
+		margin: 0 0 33px 0;
+	}
+	&__title {
+		color: #353738;
+		font-size: 18px;
+		font-weight: 700;
+		line-height: 24px;
+		text-transform: uppercase;
+		letter-spacing: 3.6px;
+		margin: 0 0 18px 0;
+	}
+	&__text {
+		color: #848789;
+		font-size: 18px;
+		line-height: 34px;
+		&_small { //модифікатор який юзається в секціях work в малому блоці контенту
+			text-align: justify;
+			font-size: 16px;
+			line-height: 30px;
+			&:after{ //лінія після тексту
+				content:'';
+				display: block;
+				margin: 35px auto 0;
+				width: 50px;
+				height: 2px;
+				background: #ebebeb;
+			}
+		}
+		@media(max-width: 1500px){
+			&_small{ 
+				&:after{
+					margin: 15px auto 0;
+				}
+			}
+		}
+	}
+}
+//=========================================================================================
+
+//=========================================================================================
+//Стилі header
+//Відсутній
+//=========================================================================================
+
+//=========================================================================================
+//Стилі bock top
+.top {
+	position: absolute;
+	width: 100%;
+	z-index: 50;
+	top: 35px;
+	&__row {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 85px;
+	}
+	&__menu {
+		&__list{
+			display: block;
+			& li{
+				margin: 0 0 20px 0;
+			}
+		}
+		&__link{
+			font-size: 24px;
+		}
+	}
+	&__sitelogo {
+		position: absolute;
+		left: 50%;
+		top: 0;
+		transform: translate(-43%);
+		z-index: 5;
+		@media(max-width: 780px){
+			transform: none;
+			position: absolute;
+			left: 5%;
+			top: 5%;
+			.active{
+				position: fixed;
+				left: 5%;
+				top: 5%;
+			}
+		}
+	}
+	@media(max-width: 780px){
+		top: 20px;
+	}
+}
+.menu {
+	&__icon {}
+	&__body {}
+	&__list {
+		display: flex;
+		li{
+			position: relative;
+			padding: 0 37.5px;
+			&:nth-child(2){
+				padding: 0 110px 0 37.5px;
+			}
+			&:nth-child(3){
+				padding: 0 37.5px 0 110px;
+			}
+			&:after{
+				content:'';
+				width: 4px;
+				height: 4px;
+				background: #4d4959;
+				border-radius: 50%;
+				position: absolute;
+				right: 0;
+				top: 40%;
+			}
+			&:nth-child(4):after, &:nth-child(2):after{
+				display: none;
+			}
+		}
+	}
+	&__link {
+		color: #4d4959;
+		font-size: px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 2.5px;
+	}
+	@media(max-width: 780px){
+		&__body{
+			overflow: hidden;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background: #4d4959;
+			padding: 150px 0 20px;
+			transform: translate(200%,-100%);
+			transition: all 0.4s ease 0s;
+			&.active{
+				transform: translate(0%,0%);
+			}
+		}
+		&__list{
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			li{
+				&:nth-child(2){
+					padding: 0 0 45px 0;
+				}
+				&:nth-child(3){
+					padding: 0 0 45px 0;
+				}
+				padding: 0 0 45px 0;
+				&:after{
+					width: 4px;
+					height: 4px;
+					background: #fff;
+					border-radius: 50%;
+					position: absolute;
+					right: 50%;
+					top: 60%;
+				}
+				&:nth-child(2):after{
+					display: inherit;
+				}
+			}
+		}
+		&__link{
+			color: #fff;
+			font-size: 24px;
+		}
+	}
+}
+.icon-menu { //палички для бургеру
+	@media(max-width: 780px){
+		display: block;
+		position: absolute;
+		top: 50%;
+		right: 5%;
+		width: 30px;
+		height: 20px;
+		z-index: 3;
+		&:before,&:after{
+			content: '';
+			background: #64c29e;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			left: 0;
+		}
+		&:before{
+			top: 0;
+			transition: all 0.4s ease 0s;	
+		}
+		&:after{
+			bottom: 0;
+			transition: all 0.4s ease 0s;
+		}
+		& span{
+			display: block;
+			background: #64c29e;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			left: 0;
+			top: 9px;
+			transition: all 0.4s ease 0s;
+		}	
+		&.active{
+			&:before{
+				transform: rotate(45deg);
+				top: 9px;
+			}
+			&:after{
+				transform: rotate(-45deg);
+				bottom: 9px;
+			}
+			& span{
+				transform: scale(0);
+			}
+		}
+	}
+}
+//=========================================================================================
+
+//=========================================================================================
+//Стилі блоку fullscreen
+.ibg{ 
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	img{
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+.fullscreen { 
+	flex: 1 0 100%;
+	position: relative;
+	&__bg { 
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+}
+//=========================================================================================
+
+//=========================================================================================
+//Стилі блоку about us
+.aboutus {
+	position: relative;
+	display: block;
+	padding: 120px 0;
+	background: #f7f7f7;
+	&__block {}
+	@media (max-width: 780px){
+		padding: 80px 0;
+	}
+	@media (max-width: 440px){
+		padding: 40px 0;
+	}
+}
+//=========================================================================================
+
+//=========================================================================================
+//Стилі блоку work
+.work{ //Загальний клас секції
+}
+.bicycle {
+	&__row {
+		display: flex;
+	}
+	&__column {
+		flex: 0 1 33.333%;
+		&_big {
+			flex: 0 1 66.666%;
+		}
+	}
+	&__item {}
+	&__content {
+		padding: 70px 65px 55px 65px;
+		position: relative;
+		&:after{ //стілка після тексту вниз на картинку (вона білого кольору)
+			content:'';
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			margin: 0 0 0 -10px;
+			width: 0;
+			height: 0;			
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-top: 10px solid #fff;
+			z-index: 5;
+		}
+	}
+	&__image {
+		padding: 0 0 37.51% 0;
+	}
+	@media(max-width: 1500px){
+		&__content {
+			padding: 40px 35px 25px 35px;
+		}
+	}
+	@media(max-width: 1100px){
+		&__row{
+			flex-direction: column;
+
+		}
+	}
+}
+.item {//велика картинка
+	height: 100%;	
+	display: block;
+	position: relative;
+	&__logo {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 5;
+		background: rgb(90, 166, 141, 0.7);
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.7s ease 0s;	
+	}
+	&__image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	&:hover{
+		.item__logo{
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	@media(max-width: 1100px){
+		height: auto;
+		padding: 0 0 70% 0;
+	}
+}
+//=========================================================================================
+
+//=========================================================================================
+//Стилі блок work work_reverse
+//=========================================================================================
+.work{
+	&__reverse{
+		display: flex;
+		.bicycle{
+			&__column{
+				order: 1;
+				&_big{
+					order: 2;
+				}
+			}
+		}
+	}
+}
+//=========================================================================================
+
+//=========================================================================================
+//Стилі блоку work work__twoimage
+//=========================================================================================
+.work {
+	&__twoimage {
+		.bicycle {
+			&__last {}
+		}
+	}
+}
+//=========================================================================================
+
+//=========================================================================================
+//Стилі блоку slider
+.slider {
+	background: #f7f7f7;
+	padding: 80px 0 80px;
+	&__body {
+	}
+	&__item {
+		text-align: center;
+	}
+	&__icon {
+		margin: 0 0 35px 0;
+	}
+	&__title {
+		color: #353738;
+		font-style: 18px;
+		font-weight: 700;	
+		margin: 0 0 20px 0;
+		span{
+			font-weight: 300;
+		}
+	}
+	&__text {
+		color: #848789;
+		font-size: 24px;
+		font-style: italic;
+		line-height: 34px;
+	}
+	@media (max-width: 780px) {
+			padding: 60px 15px 60px;
+	}	
+	@media (max-width: 450px) {
+			padding: 30px 15px 30px;
+			&__text {
+				font-size: 18px;
+			}
+	}	
+}
+//не зроблено
+//=========================================================================================
+
+//=========================================================================================
+//Стилі блоку shop
+.shop {
+	&__body {
+		display: flex;
+	}
+	&__column {
+		flex: 0 1 16.666%;
+		&_b {
+			flex: 0 1 33.333%;
+		}
+	}
+	&__block {}
+	@media (max-width: 1100px) {
+		&__body {
+			flex-wrap: wrap;
+		}
+		&__column {
+			flex: 0 1 50%;
+			&:first-child{
+				flex: 1 1 100%;
+			}
+			&:last-child{
+				flex: 1 1 100%;
+			}
+		}
+	}
+}
+.block-shop {
+	height: 100%;
+	&__row {
+		display: flex;
+	}
+	&__column {
+		flex: 0 1 50%;
+	}
+	&__item {
+		height: auto;
+		padding: 0 0 50% 0;
+		&_b{
+			padding: 0 0 200.5% 0;
+		}
+		&_l{
+			padding: 0 0 100.5% 0;
+		}
+	}
+}
+//кнопка
+.shop {
+	&__bottom {
+		text-align: center;
+		background: #282f35;
+		padding: 75px 0;
+		@media (max-width: 450px){
+			padding: 40px 0;
+		}
+		@media (max-width: 350px){
+			padding: 20px 5px;
+		}
+	}
+	&__link {
+		display: inline-block;
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		width: 305px;
+		height: 55px;
+	  font-size: 14px;
+	  color: #fff;
+	  font-weight: 700;
+	  text-transform: uppercase;
+	  line-height: 55px;
+	  letter-spacing: 2px;
+	  transition: all 0.5s  ease 0s;
+	  &:hover{
+	  	color: #000;
+	  	font-size: 16px;
+	  	background: #fff;
+	  	border: 1px solid rgba(247, 247, 247, 1);
+	  }
+	  @media (max-width: 350px){
+	  	width: 255px;
+		}
+	}
+}
+//=========================================================================================
+
+//=========================================================================================
+//Стилі блоку mailing
+.mailing {
+	padding: 110px 0;
+	&__top {
+		max-width: 534px;
+		text-align: center;
+		margin: 0 auto;
+	}
+		&__sitelogo {
+			margin: 0 0 40px 0;
+		}
+		&__title {
+			color: #848789;
+			font-size: 24px;
+			font-style: italic;
+			margin: 0 0 35px 0;
+		}
+	&__body {
+		max-width: 534px;
+		text-align: center;
+		margin: 0 auto;		
+	}
+		&__form {
+			display: flex;
+		}
+		&__input {
+			flex: 1 1 auto;
+			margin: 0 10px 0 0;
+			.input{
+				width: 100%;
+				height: 69px;
+				border: 1px solid #d3d7d9;
+				background: #fff;
+				padding: 0 28px;
+				color: #929292;
+				font-style: italic;
+				font-size: 20px;
+				transition: all 0.5s  ease 0;
+				&:focus{
+					border-top: 2px solid #64c29e;
+				}
+			}
+		}
+		&__button {
+			flex: 0 0 126px;
+		}
+		&__btn {
+			width: 126px;
+			height: 69px;
+			background: #64c29e;
+			line-height: 69px;
+			color: #fff;
+			font-size: 24px;
+			text-transform: uppercase;
+			font-weight: 400;
+			transition: all 0.5s  ease 0s;
+			&:active{
+				background: #fff;
+				color: #64c29e;
+				font-weight: 700;
+				border: 1px solid #64c29e;
+			}
+		}
+	@media (max-width: 780px) {
+		padding: 50px 0;
+	}
+	@media (max-width: 450px) {
+		&__form{
+			display: block;
+		}
+		&__input {
+			margin: 0 0 15px 0;
+		}
+		&__btn {
+			width: 100%;
+		}
+	}
+}
+//=========================================================================================
+
+//=========================================================================================
+//Стилі footer
+.footer {
+	padding: 100px 0;
+	background: #f7f7f7;
+	&__row{
+		display: flex;
+		align-items: center;
+	}	
+	&__column {
+		flex: 0 1 33.333%;
+	}
+	&__address{
+		font-size: 16px;
+	  color: #848789;
+	  line-height: 1.117;
+	  font-style: italic;
+  	display: flex;
+		justify-content: center;
+		align-items: start;
+		flex-direction: column;
+		& :first-child{
+	  	font-weight: 700;
+	  	font-style: normal;
+		}
+	}
+	&__social {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__link {	
+		margin: 0 7.5px;
+	}
+	&__autor {
+		display: flex;
+		justify-content: end;
+		align-items: center;
+	}
+	@media (max-width: 1100px){
+		padding: 80px 0;
+	}
+	@media (max-width: 450px){
+		padding: 50px 0;
+		&__row{
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		&__column {
+			margin: 0 0 30px 0;
+			&:last-child{
+				margin: 0 0 0 0;
+			}
+		}
+		&__address{
+				align-items: center;
+		}
+	}
+}
+.autor {
+	&__text {
+		color: #848789;
+	 	font-size: 14px;
+	 	font-style: italic;
+  	line-height: 1.286;
+  	margin: 0 10px 0 0;
+	}
+	&__icon {}
+}
+
+
+
+
+
+
+//=========================================================================================
+//=========================================================================================
+//Стилі other
+
+//Робимо картинку фоном css + код в js
+
+//=========================================================================================
+
